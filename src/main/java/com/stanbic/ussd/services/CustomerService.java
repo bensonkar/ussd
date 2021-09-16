@@ -2,9 +2,14 @@ package com.stanbic.ussd.services;
 
 import com.stanbic.ussd.entities.Customer;
 import com.stanbic.ussd.repository.CustomerRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Service
+/**
+ * @author bkariuki
+ */
+@Component
+@Transactional
 public class CustomerService {
 
     private final CustomerRepository customerRepository;

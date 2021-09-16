@@ -2,7 +2,11 @@ package com.stanbic.ussd.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
+/**
+ * @author bkariuki
+ */
 @Entity
 @Table(name = "CUSTOMER")
 public class Customer implements Serializable {
@@ -17,6 +21,14 @@ public class Customer implements Serializable {
     private String storeNumber;
     @Column(name = "HEAD_OFFICE_NUMBER")
     private String headOfOfficeNumber;
+    @Column(name = "PHONE")
+    private String phone;
+    @Column(name = "CREATION_DATE")
+    private Date creationDate;
+
+    public Customer() {
+        this.creationDate = new Date();
+    }
 
     public Long getId() {
         return id;
@@ -50,6 +62,22 @@ public class Customer implements Serializable {
         this.headOfOfficeNumber = headOfOfficeNumber;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
     @Override
     public String toString() {
         return "Customer[" +
@@ -57,6 +85,8 @@ public class Customer implements Serializable {
                 ", contact='" + contact + '\'' +
                 ", storeNumber='" + storeNumber + '\'' +
                 ", headOfOfficeNumber='" + headOfOfficeNumber + '\'' +
+                ", phone='" + phone + '\'' +
+                ", creationDate=" + creationDate +
                 ']';
     }
 }

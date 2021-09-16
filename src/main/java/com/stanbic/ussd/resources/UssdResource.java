@@ -1,27 +1,28 @@
 package com.stanbic.ussd.resources;
 
-import com.stanbic.ussd.entities.Customer;
 import com.stanbic.ussd.services.CustomerService;
+import com.stanbic.ussd.services.UssdService;
+import com.stanbic.ussd.wrappers.UssdRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author bkariuki
+ */
 @RestController
 @RequestMapping("/ussd")
 public class UssdResource {
 
-    private final CustomerService customerService;
+    private final UssdService ussdService;
 
-    public UssdResource(CustomerService customerService) {
-        this.customerService = customerService;
+    public UssdResource(UssdService ussdService) {
+        this.ussdService = ussdService;
     }
 
-    @GetMapping("/")
-    public void test() {
-        System.out.println("ussd exposed public");
-    }
-
-    @PostMapping("/create")
-    public void create(@RequestBody Customer customer) {
-        customerService.create(customer);
+    @PostMapping(value = "/create", consumes = "application/x-www-form-urlencoded")
+    public String create(UssdRequest request) {
+        return ussdService.handleUSSD(request);
     }
 
 }
