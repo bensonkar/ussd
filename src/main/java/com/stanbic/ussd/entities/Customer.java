@@ -8,7 +8,7 @@ import java.util.Date;
  * @author bkariuki
  */
 @Entity
-@Table(name = "CUSTOMER")
+@Table(name = "CUSTOMERS")
 public class Customer implements Serializable {
 
     @Id
